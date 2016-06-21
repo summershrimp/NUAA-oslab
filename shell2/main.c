@@ -78,7 +78,7 @@ void loop()
         if(strlen(p) > 2)
         {
             sscanf(p, "cd %s", dir);
-            chdir(p);
+            chdir(dir);
         }
     }
     else if (strstr(p, "pwd") == buf)
