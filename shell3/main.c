@@ -122,15 +122,15 @@ void dup_handler(char *command, int pipe_read, int pipe_write, int need_wait)
         }
     }
     //printf("cmd: %s, ", command);
-    if(pipe_read > -1)
-    {
-        //printf("read pipe, ");
-        read_fd = pipe_read;
-    }
-    else if(r_stdin)
+    if(r_stdin)
     {
         //printf("read redir, ");
         read_fd = open(stdin, O_CREAT | O_RDWR, S_IREAD | S_IWRITE); 
+    }
+    else if(pipe_read > -1)
+    {
+        //printf("read pipe, ");
+        read_fd = pipe_read;
     }
     else 
     {
@@ -138,15 +138,15 @@ void dup_handler(char *command, int pipe_read, int pipe_write, int need_wait)
         read_fd = -1;
     }
     
-    if(pipe_write > -1)
-    {
-        //printf("write pipe.");
-        write_fd = pipe_write;
-    }
-    else if(r_stdout)
+    if(r_stdout)
     {   
         //printf("write redir.");
         write_fd = open(stdout, O_CREAT | O_RDWR, S_IREAD | S_IWRITE);
+    }
+    else if(pipe_write > -1)
+    {
+        //printf("write pipe.");
+        write_fd = pipe_write;
     }
     else 
     {
