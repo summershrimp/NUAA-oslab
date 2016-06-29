@@ -66,7 +66,7 @@ int main(void)
         pthread_join(*(threads + i), NULL);
     }
     
-    printf("%f", reduce() * 4.0);
+    printf("%f\n", reduce() * 4.0);
 
     return 0;
 }

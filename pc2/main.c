@@ -85,6 +85,7 @@ void *consumer(void *args)
         sem_wait(&buf2_full);
         pthread_mutex_lock(&buf2_mutex);
         putchar(buffer2[buf2_front++]);
+        putchar(' ');
         buf2_front %= 4;
         sem_post(&buf2_empty);
         pthread_mutex_unlock(&buf2_mutex);
@@ -105,7 +106,7 @@ int main(void)
     pthread_create(&th_cons, 0, consumer, NULL);
 
     producer(NULL);
-    usleep(1000);
+    usleep(100);
     return 0;
 }
 

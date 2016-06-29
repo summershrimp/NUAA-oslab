@@ -62,7 +62,7 @@ void *calc(void *param)
         ++n;
         printf("Calc %d: %d\n", nth, n);
         fflush(stdin);
-        usleep(100);
+        usleep(100000);
         pthread_cond_signal(&cond);
         pthread_cond_wait(&cond, &nmutex);
     }

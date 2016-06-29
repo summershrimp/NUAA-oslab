@@ -60,7 +60,7 @@ int main(void)
     map((void *)(arg_list + 1));
     pthread_join(thread, NULL);
     
-    printf("%f", reduce() * 4.0);
+    printf("%f\n", reduce() * 4.0);
 
     return 0;
 }

@@ -11,7 +11,7 @@ void my_system(char *command)
     char *file = NULL;
     int i, cmd_len, argc, strspos;
     pid = fork();
-    printf("child process\n");
+    //printf("child process\n");
     if(pid == -1)
     {
         
@@ -20,13 +20,13 @@ void my_system(char *command)
     }
     else if(pid != 0)
     {
-        printf("parent process\n");
+        //printf("parent process\n");
         waitpid(pid, NULL, 0);
         return ;
     }
     else
     {
-        printf("child process\n");
+        //printf("child process\n");
         cmd = malloc((strlen(command) + 1)*sizeof(char));
         strcpy(cmd, command);
         cmd_len = strlen(cmd);
